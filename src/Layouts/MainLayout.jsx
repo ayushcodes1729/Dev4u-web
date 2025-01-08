@@ -6,6 +6,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import axios from 'axios'
 import { BASE_URL } from '../utils/constants'
 import { addUser } from '../utils/userSlice'
+import { ToastContainer } from 'react-toastify'
 
 function MainLayout() {
     const dispatch = useDispatch();
@@ -35,6 +36,7 @@ function MainLayout() {
             <Navbar />
             <div className='flex-grow'>
                 <Outlet />
+                <ToastContainer autoClose={1000}/>
             </div>
             <Footer />
         </div>
