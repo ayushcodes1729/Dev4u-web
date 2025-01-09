@@ -12,7 +12,7 @@ function HomePage() {
   const showFeed = async () => {
     const res = await axios.get(BASE_URL + "user/feed", { withCredentials: true })
     dispatch(addFeed(res.data))
-    // console.log(res.data);
+    console.log(res.data);
   }
 
   useEffect(() => {
