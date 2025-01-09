@@ -38,7 +38,7 @@ function EditProfile({ user }) {
             // console.log(error);
         }
     }
-    return user && (
+    return (
         <label className="card form-control w-full max-w-xs bg-base-200 p-4 gap-4">
             <h1 className='text-center text-white text-lg'>Edit profile</h1>
             <input type="text" placeholder="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} name='firstName' className="input input-bordered w-full max-w-xs" />
