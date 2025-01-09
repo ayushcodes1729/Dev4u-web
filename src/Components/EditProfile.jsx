@@ -40,6 +40,7 @@ function EditProfile({ user }) {
     }
     return user && (
         <label className="card form-control w-full max-w-xs bg-base-200 p-4 gap-4">
+            <h1 className='text-center text-white text-lg'>Edit profile</h1>
             <input type="text" placeholder="firstName" value={firstName} onChange={(e) => setFirstName(e.target.value)} name='firstName' className="input input-bordered w-full max-w-xs" />
             <input type="text" placeholder="lastName" value={lastName} onChange={(e) => setLastName(e.target.value)} name='lastName' className="input input-bordered w-full max-w-xs" />
             <input type="text" placeholder="age" value={age} onChange={(e) => setAge(e.target.value)} name='age' className="input input-bordered w-full max-w-xs" />
@@ -51,7 +52,7 @@ function EditProfile({ user }) {
             </select>
             <input type="text" placeholder="photoUrl" value={photoUrl} onChange={(e) => setPhotoUrl(e.target.value)} name='photoUrl' className="input input-bordered w-full max-w-xs" />
             <textarea value={about} onChange={(e) => setAbout(e.target.value)} name="about" id="about" placeholder='Tell us about Yourself' className='p-2 flex-grow'></textarea>
-            <p>{error}</p>
+            <p className='text-red-500'>{error}</p>
             <button className="btn btn-outline btn-accent" onClick={saveProfile}>Save Profile</button>
         </label>
     )

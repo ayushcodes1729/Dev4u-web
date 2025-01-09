@@ -4,7 +4,7 @@ function UserCard({ user }) {
     const { firstName, lastName, photoUrl, age, gender, skills, about } = user;
     return (
         <div className=''>
-            <div className="card flex flex-col items-center bg-base-200 max-h-[80vh] w-80 shadow-xl">
+            <div className="card flex flex-col items-center bg-base-300 max-h-[80vh] w-80 shadow-xl">
                 <figure className='w-full h-64'>
                     <img
                         className='w-full h-full object-contain'
@@ -15,9 +15,9 @@ function UserCard({ user }) {
 
                 <div className="card-body w-full">
                     <h2 className="card-title">{firstName + " " + (lastName && lastName)}</h2>
-                    <div className="flex">
-                        <span className='bg-base-100'>{age && age}</span>
-                        <span className='bg-base-100'>{gender && gender}</span>
+                    <div className="flex gap-4">
+                        <span className='bg-base-100 px-2 rounded-md'>{age && age}</span>
+                        <span className='bg-base-100 px-2 rounded-md'>{gender && gender}</span>
                     </div>
                     <p>{about && about}</p>
                     <div className="card-actions flex justify-center">
