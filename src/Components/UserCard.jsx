@@ -16,8 +16,8 @@ function UserCard({ user }) {
                 <div className="card-body w-full">
                     <h2 className="card-title">{firstName + " " + (lastName && lastName)}</h2>
                     <div className="flex gap-4">
-                        <span className='bg-base-100 px-2 rounded-md'>{age && age}</span>
-                        <span className='bg-base-100 px-2 rounded-md'>{gender && gender}</span>
+                        {age && <span className='bg-base-100 px-2 rounded-md'>{age}</span>}
+                        {gender && <span className='bg-base-100 px-2 rounded-md'>{gender}</span>}
                     </div>
                     <p>{about && about}</p>
                     <div className="card-actions flex justify-center">
