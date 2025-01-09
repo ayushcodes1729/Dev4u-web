@@ -18,9 +18,13 @@ function HomePage() {
   useEffect(() => {
     showFeed()
   }, [])
+
+  if (!feed) return;
+
+  if (feed.length <= 0) return <h1 className='flex justify-center m-4'>No More users are left</h1>
   return feed && (
     <div className='flex justify-center items-center py-4'>
-      <UserCard user={feed[0]}/>
+      <UserCard user={feed[0]} />
     </div>
   )
 }
