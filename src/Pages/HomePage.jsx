@@ -86,7 +86,7 @@ function HomePage() {
       `}</style>
       
       {/* Instructions Container */}
-      <div className="absolute inset-0 flex items-center justify-between px-8 pointer-events-none">
+      <div className="absolute inset-0 hidden lg:flex items-center justify-between px-8 pointer-events-none ">
         {hiddenButtons && (
           <>
             <div className="pointer-events-auto">
