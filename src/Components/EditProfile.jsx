@@ -10,7 +10,7 @@ function EditProfile({ user }) {
     const [firstName, setFirstName] = useState(user.firstName);
     const [lastName, setLastName] = useState(user.lastName);
     const [age, setAge] = useState(user.age ? user?.age : "");
-    const [gender, setGender] = useState(user.gender ? user?.gender : "");
+    const [gender, setGender] = useState(user.gender ? user?.gender : "M");
     const [photoUrl, setPhotoUrl] = useState(user.photoUrl);
     const [about, setAbout] = useState(user.about);
 
@@ -46,7 +46,7 @@ function EditProfile({ user }) {
             <input type="text" placeholder="age" value={age} onChange={(e) => setAge(e.target.value)} name='age' className="input input-bordered w-full max-w-xs" />
             <select name='gender' value={gender} onChange={(e) => setGender(e.target.value)} className="select select-bordered w-full max-w-xs">
                 <option disabled>Gender</option>
-                <option>M</option>
+                <option selected>M</option>
                 <option>F</option>
                 <option>Others</option>
             </select>

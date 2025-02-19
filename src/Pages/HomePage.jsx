@@ -67,7 +67,7 @@ function HomePage() {
     return <h1 className='flex justify-center m-4'>No More users are left</h1>
   
   return (
-    <div className='relative h-[80vh] flex justify-center items-center py-4'>
+    <div className='relative h-[calc(100vh-8rem)] flex justify-center items-center'>
       <style>{`
         @keyframes bounceLeft {
           0%, 100% { transform: translateX(0); }
@@ -86,7 +86,7 @@ function HomePage() {
       `}</style>
       
       {/* Instructions Container */}
-      <div className="absolute inset-0 hidden lg:flex items-center justify-between px-8 pointer-events-none ">
+      <div className="absolute inset-0 hidden lg:flex items-center justify-between px-8 pointer-events-none">
         {hiddenButtons && (
           <>
             <div className="pointer-events-auto">
@@ -108,7 +108,7 @@ function HomePage() {
           style={{
             position: 'absolute',
             zIndex: feed.length - index,
-            opacity: index === 0 ? 1 : 0.8,
+            opacity: index === 0 ? 1 : 0.99,
             scale: `${1 - index * 0.05}`,
             top: `${index * 10}px`
           }}

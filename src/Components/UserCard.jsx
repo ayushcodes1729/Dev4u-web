@@ -1,11 +1,13 @@
-import React from 'react';
+import React, { useState } from 'react';
 import axios from 'axios';
 import { useDispatch } from 'react-redux';
 import { motion, useMotionValue, useTransform, useAnimation } from 'framer-motion';
 import { removeUserFromFeed } from '../utils/feedSlice';
 import { BASE_URL } from '../utils/constants';
+import { Heart, X } from 'lucide-react';
 
 const UserCard = ({ user, isTop, style }) => {
+    const [show,setShow] = useState(false);
     const dispatch = useDispatch();
     const motionValue = useMotionValue(0);
     const rotateValue = useTransform(motionValue, [-200, 200], [-50, 50]);
@@ -32,7 +34,7 @@ const UserCard = ({ user, isTop, style }) => {
     };
 
     const handleDragEnd = (_, info) => {
-        const threshold = 150;
+        const threshold = 40;
         if (Math.abs(info.offset.x) < threshold) {
             controls.start({ x: 0 });
         } else {
@@ -46,6 +48,7 @@ const UserCard = ({ user, isTop, style }) => {
         }
     };
 
+
     return (
         <motion.div
             style={{
@@ -58,17 +61,17 @@ const UserCard = ({ user, isTop, style }) => {
             dragConstraints={{ left: -1000, right: 1000 }}
             onDragEnd={handleDragEnd}
             animate={controls}
-            className="card bg-base-300 w-80 shadow-xl max-h-[80vh]"
+            className="card bg-base-300 w-80 shadow-xl h-[calc(100vh-8rem)]"
         >
-            <figure className="w-full h-64">
+            <figure className="w-full h-[60%] bg-gray-100 flex items-center justify-center p-2">
                 <img
                     src={photoUrl}
                     alt={`${firstName}'s photo`}
-                    className="w-full h-full object-cover"
+                    className="w-full h-full object-contain"
                 />
             </figure>
 
-            <div className="card-body">
+            <div className="card-body gap-0 py-4">
                 <h2 className="card-title">
                     {firstName} {lastName}
                 </h2>
@@ -86,21 +89,21 @@ const UserCard = ({ user, isTop, style }) => {
                     )}
                 </div>
 
-                {about && <p className="text-sm mt-2">{about}</p>}
+                {about && <p className="text-sm mt-2" onClick={()=>setShow(!show)}>{about.length > 40 ? (!show ? `${about.slice(0,40)}...` : about) : about}</p>}
 
                 {isTop && (
                     <div className="card-actions justify-between mt-4">
                         <button
-                            className="btn btn-primary flex-1 mr-2"
+                            className="w-12 h-12 rounded-full bg-red-500 flex items-center justify-center hover:bg-red-600 transition-colors"
                             onClick={() => sendRequest('ignored')}
                         >
-                            Ignore
+                            <X className="text-white w-6 h-6"/>
                         </button>
                         <button
-                            className="btn btn-secondary flex-1"
+                            className="w-12 h-12 rounded-full bg-green-500 flex items-center justify-center hover:bg-green-600 transition-colors"
                             onClick={() => sendRequest('interested')}
                         >
-                            Interested
+                            <Heart className="text-white w-6 h-6"/>
                         </button>
                     </div>
                 )}
