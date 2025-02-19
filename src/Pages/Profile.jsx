@@ -13,8 +13,7 @@ const Profile = () => {
     const { _id, firstName, lastName, photoUrl, age, gender, skills, about } = user
 
     return (
-        <div className="flex justify-center gap-4 py-6">
-            <EditProfile user={user} />
+        <div className="flex flex-wrap justify-center gap-4 py-6">
             <div
                 className="card bg-base-300 w-80 shadow-xl "
             >
@@ -47,6 +46,7 @@ const Profile = () => {
                     {about && <p className="text-sm mt-2">{about}</p>}
                 </div>
             </div>
+            <EditProfile user={user} />
         </div>
     );
 };
