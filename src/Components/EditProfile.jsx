@@ -4,6 +4,7 @@ import { useDispatch, useSelector } from 'react-redux'
 import { BASE_URL } from '../utils/constants';
 import { addUser } from '../utils/userSlice';
 import { toast } from 'react-toastify';
+import { useNavigate } from 'react-router-dom';
 
 function EditProfile({ user }) {
 
@@ -15,6 +16,7 @@ function EditProfile({ user }) {
     const [about, setAbout] = useState(user.about);
 
     const [error, setError] = useState("");
+    const navigate = useNavigate();
 
 
     const dispatch = useDispatch();
@@ -33,6 +35,7 @@ function EditProfile({ user }) {
             // console.log(res)
             dispatch(addUser(res?.data?.data))
             toast.success("Profile Updated successfully")
+            navigate("/")
         } catch (error) {
             setError(error?.response?.data || "Something Went Wrong");
             // console.log(error);
